@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Joyful Math Foundation supports joyful math as a human activity for everyone from children to research mathematicians.">
+<title>Joyful Math Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..800,100,1;1,9..144,400..800,100,1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+body { margin: 0; }
+img { max-width: 100%; }
+/* Layout: a playful single column — logo and mission up top over drifting math doodles,
+   a crossed-out vs. circled "what is joyful math" contrast, two tilted sticker cards, and a row of bridges. */
+:root {
+  --bg: #f4f8ff;
+  --panel: #ffffff;
+  --ink: #18213a;
+  --muted: #4a5674;
+  --brand: #1a5fb4;
+  --sun: #ffc93c;
+  --coral: #f2694b;
+  --mint: #23a487;
+  --line: #18213a;
+  --tint-sun: #fff4cf;
+  --tint-mint: #dcf5ee;
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --measure: 62ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1628; --panel: #18223a; --ink: #eef2fb; --muted: #b3bdd4;
+    --brand: #8ab8ff; --sun: #ffd666; --coral: #ff9478; --mint: #5fd6b6; --line: #b3bdd4;
+    --tint-sun: #3a3220; --tint-mint: #173a35; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1628; --panel: #18223a; --ink: #eef2fb; --muted: #b3bdd4;
+  --brand: #8ab8ff; --sun: #ffd666; --coral: #ff9478; --mint: #5fd6b6; --line: #b3bdd4;
+  --tint-sun: #3a3220; --tint-mint: #173a35; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  padding-inline: 20px; overflow-x: clip;
+}
+.wrap { max-width: 1060px; margin-inline: auto; position: relative; }
+h1, h2, h3 {
+  font-family: var(--display); font-weight: 650; line-height: 1.12; margin: 0; text-wrap: balance;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+p { margin: 0; text-wrap: pretty; }
+a { color: var(--brand); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a:focus-visible, .card:focus-visible { outline: 3px dashed var(--brand); outline-offset: 4px; border-radius: 6px; }
+
+/* Header */
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 22px; }
+.wordmark { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--ink); text-decoration: none; font-variation-settings: "SOFT" 100, "WONK" 1; }
+.site-header nav { display: flex; gap: 6px 22px; flex-wrap: wrap; }
+.site-header nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+.site-header nav a:hover { color: var(--ink); text-decoration: underline wavy var(--coral); }
+
+/* Hero */
+.hero { position: relative; padding-block: 36px 72px; overflow: clip; overflow-clip-margin: 20px; }
+#doodles { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 32px 56px; align-items: center; }
+.logo svg { width: 100%; max-width: 440px; height: auto; display: block; color: var(--ink); filter: drop-shadow(0 6px 0 var(--tint-sun)); }
+.logo .math { fill: currentColor; }
+.logo .joyful { fill: var(--brand); }
+.mission { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.tag {
+  align-self: flex-start; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--sun); color: #18213a; padding: 4px 12px 3px; border-radius: 999px; transform: rotate(-2deg);
+}
+.mission h1 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.9rem); }
+.squiggle { position: relative; white-space: nowrap; color: var(--brand); }
+.squiggle svg { position: absolute; left: -2%; bottom: -0.32em; width: 104%; height: 0.45em; overflow: visible; }
+.squiggle path { fill: none; stroke: var(--coral); stroke-width: 3.5; stroke-linecap: round; }
+
+/* Section heads */
+.section { padding-block: 64px; }
+.section-head { display: flex; flex-direction: column; gap: 12px; max-width: var(--measure); margin-bottom: 36px; }
+.section-head h2 { font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.5rem); }
+.section-head p { color: var(--muted); }
+
+/* What is joyful math */
+.contrast { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.side { border-radius: 18px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.side h3 { font-size: 1.35rem; }
+.side.not { background: transparent; border: 2px dashed var(--muted); }
+.side.yes { background: var(--tint-mint); border: 2px solid var(--line); box-shadow: 6px 6px 0 var(--mint); }
+.words { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.not .words li { position: relative; color: var(--muted); font-size: 1.1rem; padding: 0 2px; }
+.not .words li::after {
+  content: ""; position: absolute; left: -3px; right: -3px; top: 52%; height: 3px; border-radius: 3px;
+  background: var(--coral); transform: rotate(-4deg);
+}
+.yes .words li {
+  font-family: var(--display); font-weight: 600; font-size: 1.2rem; font-variation-settings: "SOFT" 100, "WONK" 1;
+  background: var(--panel); border: 2px solid var(--line); border-radius: 999px; padding: 2px 14px;
+}
+.yes .words li:nth-child(odd) { transform: rotate(-2deg); }
+.yes .words li:nth-child(even) { transform: rotate(1.5deg); }
+
+/* Two activities */
+.cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.card {
+  background: var(--panel); border: 2px solid var(--line); border-radius: 22px; padding: 26px 28px 28px;
+  display: flex; flex-direction: column; gap: 14px; min-width: 0;
+  transition: transform 220ms ease;
+}
+.card.circles { transform: rotate(-1.4deg); box-shadow: 8px 8px 0 var(--sun); }
+.card.oer { transform: rotate(1.2deg); box-shadow: 8px 8px 0 var(--coral); margin-top: 28px; }
+.card:hover { transform: rotate(0deg) translateY(-3px); }
+.card .art { width: 132px; height: 112px; }
+.card h3 { font-size: 1.75rem; }
+.card .for { font-weight: 700; color: var(--brand); }
+.card p { color: var(--muted); }
+.chips { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { font-size: 0.9rem; font-weight: 700; border-radius: 999px; padding: 3px 12px; border: 2px solid var(--line); color: var(--ink); }
+.circles .chips li { background: var(--tint-sun); }
+.oer .chips li { background: var(--tint-mint); }
+
+/* Bridges */
+.people { max-width: var(--measure); color: var(--muted); margin-bottom: 30px; }
+.bridges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.bridges li {
+  display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center;
+  background: var(--panel); border: 2px solid var(--line); border-radius: 16px; padding: 18px 14px;
+  font-family: var(--display); font-weight: 600; font-size: 1.15rem; font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+.bridges svg { width: 46px; height: 18px; flex: none; }
+.bridges path { fill: none; stroke: var(--brand); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Footer */
+.site-footer {
+  margin-top: 24px; padding-block: 30px 44px; border-top: 2px dashed var(--muted);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted);
+}
+.site-footer .wordmark { font-size: 1.1rem; }
+.site-footer .legal { flex-basis: 100%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 780px) {
+  .hero-inner, .contrast, .cards { grid-template-columns: minmax(0, 1fr); }
+  .logo svg { max-width: 320px; }
+  .card.oer { margin-top: 0; }
+  .bridges { grid-template-columns: minmax(0, 1fr); }
+  .section { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-header">
+    <a class="wordmark" href="#top" id="top">Joyful Math Foundation</a>
+    <nav aria-label="Sections">
+      <a href="#joyful">Joyful math</a>
+      <a href="#programs">Our programs</a>
+      <a href="#together">Working together</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="mission">
+      <canvas id="doodles" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-38.2 -259.9 484.6 338.3" role="img" aria-label="Joyful Math Foundation logo"><defs><mask id="jmf-gap" maskUnits="userSpaceOnUse" x="-38.2" y="-259.9" width="484.6" height="338.3"><rect x="-38.2" y="-259.9" width="484.6" height="338.3" fill="#ffffff"/><g transform="translate(58.1 64.0)"><path d="M3.3000000000000003 0.0V-1.6500000000000001L6.6000000000000005 -2.805Q12.21 -4.62 12.21 -12.21V-96.69Q12.21 -99.99000000000001 11.467500000000001 -101.97Q10.725 -103.95 7.590000000000001 -105.27000000000001L3.3000000000000003 -107.25V-108.9H35.145L65.67 -29.040000000000003L94.38000000000001 -108.9H126.885V-107.25L124.245 -106.26Q121.11 -105.105 119.95500000000001 -103.0425Q118.80000000000001 -100.98 118.80000000000001 -97.68V-11.385Q118.80000000000001 -8.085 119.625 -6.2700000000000005Q120.45 -4.455 123.58500000000001 -3.1350000000000002L126.885 -1.6500000000000001V0.0H85.8V-1.6500000000000001L89.265 -3.1350000000000002Q92.4 -4.455 93.22500000000001 -6.2700000000000005Q94.05000000000001 -8.085 94.05000000000001 -11.385V-48.510000000000005L94.38000000000001 -95.7L59.895 0.0H51.645L15.675 -94.545L16.17 -53.46V-11.88Q16.17 -8.25 17.2425 -6.0225Q18.315 -3.7950000000000004 21.45 -2.805L25.080000000000002 -1.6500000000000001V0.0Z M154.60500000000002 2.475Q145.035 2.475 138.51749999999998 -2.9700000000000006Q132.0 -8.415000000000001 132.0 -18.645Q132.0 -26.400000000000002 139.92000000000002 -32.917500000000004Q147.84 -39.435 164.835 -42.735Q167.47500000000002 -43.230000000000004 170.775 -43.807500000000005Q174.075 -44.385000000000005 177.705 -45.045V-58.080000000000005Q177.705 -69.3 174.98250000000002 -73.8375Q172.26 -78.375 166.485 -78.375Q162.525 -78.375 160.215 -75.8175Q157.905 -73.26 157.245 -66.99000000000001L156.91500000000002 -65.175Q156.585 -58.080000000000005 153.45 -54.78Q150.315 -51.480000000000004 145.695 -51.480000000000004Q141.405 -51.480000000000004 138.60000000000002 -54.120000000000005Q135.79500000000002 -56.760000000000005 135.79500000000002 -61.215Q135.79500000000002 -67.98 140.4975 -72.6Q145.2 -77.22 152.95499999999998 -79.53Q160.71 -81.84 169.785 -81.84Q184.47 -81.84 192.47250000000003 -74.6625Q200.47500000000002 -67.485 200.47500000000002 -51.315000000000005V-14.850000000000001Q200.47500000000002 -7.425000000000001 207.405 -7.425000000000001H211.03500000000003L212.52 -6.105Q209.385 -2.145 205.6725 0.0Q201.96 2.145 195.195 2.145Q187.935 2.145 183.72750000000002 -1.2375Q179.52 -4.62 178.2 -10.23Q173.25 -4.95 168.0525 -1.2375Q162.85500000000002 2.475 154.60500000000002 2.475ZM164.67000000000002 -7.590000000000001Q167.97 -7.590000000000001 170.85750000000002 -9.1575Q173.745 -10.725 177.705 -14.025V-41.745000000000005Q176.055 -41.415 174.405 -41.085Q172.755 -40.755 170.61 -40.425000000000004Q163.02 -38.445 158.48250000000002 -33.7425Q153.945 -29.040000000000003 153.945 -21.12Q153.945 -14.355 157.07999999999998 -10.9725Q160.215 -7.590000000000001 164.67000000000002 -7.590000000000001Z M247.335 2.475Q236.775 2.475 230.91750000000002 -2.8050000000000006Q225.06 -8.085 225.06 -19.635V-76.065H213.675V-77.715L217.635 -78.375Q222.75 -79.53 226.4625 -81.67500000000001Q230.175 -83.82000000000001 233.805 -87.45L247.335 -102.465H248.985L248.49 -79.36500000000001H266.97V-76.065H248.325V-16.665Q248.325 -10.89 250.8825 -7.92Q253.44 -4.95 257.4 -4.95Q260.865 -4.95 263.505 -6.682500000000001Q266.145 -8.415000000000001 268.785 -11.385L270.435 -9.735000000000001Q267.135 -4.125 261.36 -0.825Q255.585 2.475 247.335 2.475Z M276.045 0.0V-1.6500000000000001L278.025 -2.31Q283.965 -4.29 283.965 -10.56V-98.67Q283.965 -102.135 282.80999999999995 -103.785Q281.655 -105.435 278.355 -106.26L275.88 -106.92V-108.57000000000001L304.92 -115.665L307.56 -114.18L306.9 -90.915V-70.29Q312.675 -75.075 319.3575 -78.45750000000001Q326.04 -81.84 334.125 -81.84Q344.85 -81.84 351.2025 -75.73500000000001Q357.555 -69.63000000000001 357.555 -56.925000000000004V-10.395000000000001Q357.555 -7.095000000000001 358.875 -5.115Q360.195 -3.1350000000000002 363.495 -2.145L364.815 -1.6500000000000001V0.0H326.205V-1.6500000000000001L328.185 -2.145Q334.125 -4.125 334.125 -10.56V-62.370000000000005Q334.125 -68.97 331.89750000000004 -71.445Q329.67 -73.92 324.06 -73.92Q320.43 -73.92 316.14 -72.51750000000001Q311.85 -71.11500000000001 307.395 -67.65V-10.23Q307.395 -3.7950000000000004 313.335 -1.98L314.655 -1.6500000000000001V0.0Z" fill="#000000" stroke="#000000" stroke-width="12" stroke-linejoin="round"/></g></mask></defs><g mask="url(#jmf-gap)"><g transform="rotate(-15 0 0)"><path d="M80.70 -66.60 L80.97 -68.36 L81.23 -70.09 L81.48 -71.78 L81.72 -73.45 L81.94 -75.08 L82.16 -76.69 L82.37 -78.26 L82.57 -79.80 L82.75 -81.31 L82.93 -82.79 L83.09 -84.23 L83.25 -85.65 L85.95 -108.30 L84.46 -108.44 L82.98 -108.58 L81.52 -108.69 L80.08 -108.80 L78.66 -108.89 L77.25 -108.97 L75.86 -109.04 L74.48 -109.10 L73.12 -109.14 L71.78 -109.17 L70.46 -109.19 L69.15 -109.20 L65.75 -109.17 L62.50 -109.09 L59.41 -108.95 L56.47 -108.75 L53.68 -108.50 L51.04 -108.19 L48.55 -107.82 L46.22 -107.40 L44.03 -106.92 L42.00 -106.39 L40.13 -105.80 L38.40 -105.15 L36.82 -104.44 L35.38 -103.66 L34.07 -102.81 L32.90 -101.88 L31.87 -100.89 L30.97 -99.83 L30.22 -98.69 L29.60 -97.48 L29.12 -96.21 L28.78 -94.86 L28.57 -93.44 L28.50 -91.95 L28.52 -91.19 L28.58 -90.43 L28.69 -89.65 L28.83 -88.87 L29.02 -88.07 L29.25 -87.26 L29.52 -86.44 L29.83 -85.62 L30.19 -84.78 L30.58 -83.93 L31.02 -83.07 L31.50 -82.20 L31.64 -81.95 L31.77 -81.70 L31.89 -81.44 L32.00 -81.18 L32.09 -80.92 L32.17 -80.66 L32.24 -80.40 L32.30 -80.13 L32.34 -79.87 L32.38 -79.60 L32.39 -79.32 L32.40 -79.05 L32.38 -78.53 L32.31 -78.02 L32.20 -77.52 L32.04 -77.03 L31.84 -76.54 L31.59 -76.07 L31.30 -75.60 L30.97 -75.15 L30.59 -74.70 L30.16 -74.27 L29.69 -73.84 L29.17 -73.42 L28.63 -73.03 L28.09 -72.67 L27.53 -72.34 L26.97 -72.05 L26.40 -71.79 L25.82 -71.57 L25.23 -71.38 L24.64 -71.23 L24.04 -71.10 L23.44 -71.02 L22.82 -70.97 L22.20 -70.95 L21.42 -70.98 L20.66 -71.06 L19.94 -71.20 L19.25 -71.40 L18.59 -71.65 L17.96 -71.96 L17.37 -72.33 L16.80 -72.75 L16.27 -73.23 L15.76 -73.76 L15.29 -74.35 L14.85 -75.00 L14.18 -76.17 L13.57 -77.36 L13.01 -78.59 L12.52 -79.85 L12.08 -81.14 L11.70 -82.46 L11.38 -83.82 L11.12 -85.20 L10.91 -86.62 L10.77 -88.06 L10.68 -89.54 L10.65 -91.05 L11.09 -96.80 L12.40 -102.05 L14.59 -106.80 L17.65 -111.05 L21.59 -114.80 L26.40 -118.05 L32.09 -120.80 L38.65 -123.05 L46.09 -124.80 L54.40 -126.05 L63.59 -126.80 L73.65 -127.05 L76.67 -127.02 L79.64 -126.95 L82.56 -126.82 L85.42 -126.65 L88.22 -126.42 L90.97 -126.15 L93.67 -125.82 L96.32 -125.45 L98.91 -125.02 L101.44 -124.55 L103.92 -124.03 L106.35 -123.45 L107.72 -123.07 L108.96 -122.63 L110.09 -122.14 L111.10 -121.58 L111.99 -120.97 L112.76 -120.30 L113.42 -119.57 L113.95 -118.78 L114.37 -117.94 L114.66 -117.03 L114.84 -116.07 L114.90 -115.05 L114.89 -114.32 L114.85 -113.61 L114.78 -112.94 L114.69 -112.30 L114.57 -111.69 L114.43 -111.11 L114.26 -110.57 L114.07 -110.05 L113.85 -109.57 L113.60 -109.11 L113.32 -108.69 L113.02 -108.30 L112.70 -107.94 L112.34 -107.61 L111.94 -107.32 L111.52 -107.05 L111.06 -106.82 L110.57 -106.61 L110.05 -106.44 L109.49 -106.30 L108.90 -106.19 L108.29 -106.11 L107.63 -106.07 L106.95 -106.05 L106.95 -106.05 L106.89 -105.49 L106.83 -104.87 L106.75 -104.18 L106.67 -103.43 L106.57 -102.62 L106.46 -101.74 L106.34 -100.79 L106.22 -99.78 L106.08 -98.71 L105.93 -97.57 L105.77 -96.37 L105.60 -95.10 L105.36 -93.41 L105.14 -91.86 L104.93 -90.43 L104.75 -89.13 L104.58 -87.96 L104.44 -86.92 L104.31 -86.01 L104.20 -85.23 L104.11 -84.58 L104.04 -84.06 L103.98 -83.66 L103.95 -83.40 L101.52 -67.52 L98.70 -53.01 L95.47 -39.89 L91.83 -28.15 L87.80 -17.79 L83.36 -8.81 L78.52 -1.22 L73.28 5.00 L67.64 9.83 L61.60 13.29 L55.15 15.36 L48.30 16.05 L46.26 16.00 L44.30 15.85 L42.42 15.61 L40.61 15.27 L38.88 14.83 L37.22 14.29 L35.64 13.65 L34.13 12.92 L32.70 12.08 L31.35 11.15 L30.08 10.13 L28.88 9.00 L27.76 7.80 L26.74 6.55 L25.82 5.25 L25.00 3.90 L24.27 2.50 L23.64 1.05 L23.11 -0.45 L22.68 -2.00 L22.34 -3.60 L22.09 -5.25 L21.95 -6.95 L21.90 -8.70 L22.01 -11.84 L22.35 -14.93 L22.91 -17.95 L23.70 -20.91 L24.71 -23.81 L25.95 -26.64 L27.41 -29.42 L29.10 -32.13 L31.01 -34.79 L33.15 -37.38 L35.51 -39.91 L38.10 -42.38 L40.87 -44.78 L42.20 -45.59 L43.66 -46.12 L45.20 -46.36 L46.75 -46.29 L48.26 -45.92 L49.67 -45.27 L50.92 -44.35 L51.97 -43.20 L52.78 -41.88 L53.32 -40.41 L53.55 -38.88 L53.49 -37.33 L53.12 -35.82 L52.46 -34.41 L51.55 -33.15 L50.40 -32.10 L47.60 -28.77 L45.32 -25.35 L43.54 -21.82 L42.27 -18.20 L41.50 -14.47 L41.25 -10.65 L41.27 -9.82 L41.32 -9.01 L41.40 -8.25 L41.52 -7.51 L41.67 -6.80 L41.85 -6.13 L42.07 -5.49 L42.32 -4.88 L42.60 -4.31 L42.92 -3.76 L43.27 -3.25 L43.65 -2.77 L44.06 -2.33 L44.50 -1.93 L44.96 -1.56 L45.45 -1.23 L45.96 -0.94 L46.50 -0.69 L47.06 -0.48 L47.65 -0.31 L48.26 -0.17 L48.90 -0.08 L49.56 -0.02 L50.25 0.00 L51.47 -0.08 L52.70 -0.31 L53.92 -0.69 L55.15 -1.23 L56.37 -1.93 L57.60 -2.77 L58.82 -3.78 L60.05 -4.93 L61.27 -6.24 L62.50 -7.71 L63.72 -9.33 L64.95 -11.10 L66.16 -13.07 L67.35 -15.26 L68.51 -17.69 L69.65 -20.35 L70.76 -23.24 L71.85 -26.36 L72.91 -29.72 L73.95 -33.30 L74.96 -37.12 L75.95 -41.16 L76.91 -45.44 L77.85 -49.95 L77.85 -49.95 Z M192.45 -39.15Q192.45 -31.95 188.1 -30.599999999999998Q179.1 -27.45 168.3 -27.0Q165.45 -14.399999999999999 157.05 -6.824999999999999Q148.65 0.75 138.0 0.75Q129.0 0.75 122.625 -3.5999999999999996Q116.25 -7.949999999999999 112.95 -15.149999999999999Q109.65 -22.349999999999998 109.65 -30.75Q109.65 -42.15 114.0 -51.075Q118.35000000000001 -60.0 126.0 -65.025Q133.65 -70.05 142.95 -70.05Q154.35 -70.05 161.325 -62.175Q168.3 -54.3 169.5 -42.75Q176.55 -43.199999999999996 186.3 -45.75Q187.5 -46.05 188.4 -46.05Q190.35 -46.05 191.39999999999998 -44.099999999999994Q192.45 -42.15 192.45 -39.15ZM152.25 -30.299999999999997Q147.6 -33.449999999999996 145.125 -38.55Q142.65 -43.65 142.65 -49.35Q142.65 -51.75 143.1 -54.15H142.35Q136.35 -54.15 132.375 -48.375Q128.4 -42.6 128.4 -32.1Q128.4 -23.849999999999998 131.625 -19.5Q134.85 -15.149999999999999 139.2 -15.149999999999999Q144.0 -15.149999999999999 147.525 -19.049999999999997Q151.05 -22.95 152.25 -30.299999999999997Z M260.55 -26.55Q260.55 -23.099999999999998 259.5 -21.15Q258.45 -19.2 256.2 -17.7L227.39999999999998 1.65Q221.7 32.699999999999996 212.475 50.474999999999994Q203.25 68.25 189.0 68.25Q181.35 68.25 176.55 63.525Q171.75 58.8 171.75 51.15Q171.75 44.1 174.975 36.75Q178.2 29.4 186.975 19.875Q195.75 10.35 211.79999999999998 -1.95L212.25 -5.3999999999999995Q213.29999999999998 -10.95 214.64999999999998 -21.3Q211.64999999999998 -10.5 206.25 -4.875Q200.85 0.75 194.85 0.75Q188.1 0.75 183.825 -5.475Q179.54999999999998 -11.7 179.54999999999998 -21.0Q179.54999999999998 -32.25 181.04999999999998 -41.625Q182.54999999999998 -51.0 186.0 -61.5Q187.5 -66.0 190.2 -67.94999999999999Q192.9 -69.89999999999999 198.75 -69.89999999999999Q202.04999999999998 -69.89999999999999 203.325 -68.85Q204.6 -67.8 204.6 -65.7Q204.6 -64.5 202.95 -57.599999999999994Q201.45 -52.05 200.54999999999998 -47.55Q199.35 -41.4 198.45 -35.775Q197.54999999999998 -30.15 197.54999999999998 -26.55Q197.54999999999998 -20.849999999999998 200.7 -20.849999999999998Q202.95 -20.849999999999998 206.325 -25.349999999999998Q209.7 -29.849999999999998 213.52499999999998 -39.0Q217.35 -48.15 220.95 -61.5Q222.14999999999998 -66.0 224.625 -67.94999999999999Q227.1 -69.89999999999999 232.04999999999998 -69.89999999999999Q235.5 -69.89999999999999 236.85 -69.0Q238.2 -68.1 238.2 -66.0Q238.2 -62.25 234.29999999999998 -40.199999999999996L230.39999999999998 -16.05Q241.95 -24.75 252.89999999999998 -31.95Q254.85 -33.15 256.35 -33.15Q258.3 -33.15 259.425 -31.275Q260.55 -29.4 260.55 -26.55ZM208.35 16.05Q196.79999999999998 25.8 191.625 33.825Q186.45 41.85 186.45 47.85Q186.45 50.4 187.425 52.05Q188.4 53.699999999999996 190.65 53.699999999999996Q194.4 53.699999999999996 199.05 45.0Q203.7 36.3 208.35 16.05Z M312.45 -35.699999999999996Q312.45 -23.849999999999998 293.84999999999997 -23.849999999999998Q290.25 -23.849999999999998 283.5 -25.2Q285.45 -15.899999999999999 286.725 -4.574999999999999Q288.0 6.75 288.0 14.1Q288.0 30.299999999999997 282.75 38.849999999999994Q277.5 47.4 268.95 47.4Q258.15 47.4 253.575 32.1Q249.0 16.8 249.0 -14.1Q249.0 -42.9 255.225 -72.52499999999999Q261.45 -102.14999999999999 272.325 -121.57499999999999Q283.2 -141.0 296.25 -141.0Q303.29999999999995 -141.0 307.275 -134.7Q311.25 -128.4 311.25 -117.75Q311.25 -82.5 269.09999999999997 -40.949999999999996Q267.59999999999997 -26.25 267.59999999999997 -15.149999999999999Q267.59999999999997 0.3 268.65 16.575Q269.7 32.85 272.09999999999997 32.85Q276.59999999999997 32.85 276.59999999999997 17.25Q276.59999999999997 5.55 275.025 -5.399999999999999Q273.45 -16.349999999999998 270.75 -28.5Q270.59999999999997 -30.45 272.025 -33.449999999999996Q273.45 -36.449999999999996 275.54999999999995 -38.699999999999996Q277.65 -40.949999999999996 279.3 -40.949999999999996Q282.3 -40.949999999999996 286.5 -40.65Q287.84999999999997 -40.5 289.65 -40.5Q295.65 -40.5 303.0 -41.55Q304.2 -41.699999999999996 305.54999999999995 -41.849999999999994Q306.9 -42.0 308.25 -42.0Q312.45 -42.0 312.45 -35.699999999999996ZM271.8 -60.9Q283.8 -74.55 290.25 -89.32499999999999Q296.7 -104.1 296.84999999999997 -117.0Q296.84999999999997 -126.14999999999999 293.09999999999997 -126.14999999999999Q290.4 -126.14999999999999 286.42499999999995 -117.0Q282.45 -107.85 278.54999999999995 -92.775Q274.65 -77.7 271.8 -60.9Z M301.04999999999995 -21.0Q301.04999999999995 -32.25 302.54999999999995 -41.625Q304.04999999999995 -51.0 307.49999999999994 -61.5Q308.99999999999994 -66.0 311.69999999999993 -67.94999999999999Q314.4 -69.89999999999999 320.24999999999994 -69.89999999999999Q323.54999999999995 -69.89999999999999 324.82499999999993 -68.85Q326.09999999999997 -67.8 326.09999999999997 -65.7Q326.09999999999997 -64.5 324.45 -57.599999999999994Q322.95 -52.05 322.04999999999995 -47.55Q319.04999999999995 -31.799999999999997 319.04999999999995 -26.55Q319.04999999999995 -23.4 319.79999999999995 -22.125Q320.54999999999995 -20.849999999999998 322.2 -20.849999999999998Q324.45 -20.849999999999998 327.825 -25.349999999999998Q331.2 -29.849999999999998 335.025 -39.0Q338.84999999999997 -48.15 342.45 -61.5Q343.65 -66.0 346.125 -67.94999999999999Q348.59999999999997 -69.89999999999999 353.54999999999995 -69.89999999999999Q356.99999999999994 -69.89999999999999 358.3499999999999 -69.07499999999999Q359.69999999999993 -68.25 359.69999999999993 -66.0Q359.69999999999993 -62.25 355.94999999999993 -45.449999999999996Q351.74999999999994 -26.25 351.74999999999994 -21.75Q351.74999999999994 -18.9 352.94999999999993 -17.325Q354.15 -15.75 356.09999999999997 -15.75Q359.09999999999997 -15.75 363.22499999999997 -19.424999999999997Q367.34999999999997 -23.099999999999998 374.24999999999994 -31.349999999999998Q376.04999999999995 -33.449999999999996 378.29999999999995 -33.449999999999996Q380.24999999999994 -33.449999999999996 381.37499999999994 -31.65Q382.49999999999994 -29.849999999999998 382.49999999999994 -26.7Q382.49999999999994 -20.7 379.65 -17.4Q373.19999999999993 -9.45 365.775 -4.35Q358.34999999999997 0.75 348.9 0.75Q341.7 0.75 338.325 -4.8Q334.95 -10.35 334.95 -20.4Q332.4 -10.2 327.29999999999995 -4.725Q322.2 0.75 316.34999999999997 0.75Q309.59999999999997 0.75 305.32499999999993 -5.475Q301.04999999999995 -11.7 301.04999999999995 -21.0Z M431.4 -26.7Q431.4 -20.7 428.54999999999995 -17.4Q422.09999999999997 -9.45 414.525 -4.35Q406.95 0.75 397.34999999999997 0.75Q384.15 0.75 377.775 -11.25Q371.4 -23.25 371.4 -42.3Q371.4 -60.599999999999994 376.125 -84.0Q380.84999999999997 -107.39999999999999 390.07499999999993 -124.19999999999999Q399.29999999999995 -141.0 412.04999999999995 -141.0Q419.25 -141.0 423.375 -134.325Q427.5 -127.64999999999999 427.5 -115.19999999999999Q427.5 -97.35 417.6 -73.8Q407.7 -50.25 390.75 -27.15Q391.79999999999995 -21.0 394.19999999999993 -18.375Q396.59999999999997 -15.75 400.5 -15.75Q406.65 -15.75 411.29999999999995 -19.275Q415.95 -22.8 423.15 -31.349999999999998Q424.95 -33.449999999999996 427.2 -33.449999999999996Q429.15 -33.449999999999996 430.275 -31.65Q431.4 -29.849999999999998 431.4 -26.7ZM389.7 -47.4Q400.34999999999997 -64.95 406.65 -82.575Q412.95 -100.2 412.95 -114.75Q412.95 -126.14999999999999 408.75 -126.14999999999999Q405.29999999999995 -126.14999999999999 400.94999999999993 -113.69999999999999Q396.59999999999997 -101.25 393.29999999999995 -82.8Q390.0 -64.35 389.7 -47.4Z" class="joyful"/></g></g><g transform="translate(58.1 64.0)"><path d="M3.3000000000000003 0.0V-1.6500000000000001L6.6000000000000005 -2.805Q12.21 -4.62 12.21 -12.21V-96.69Q12.21 -99.99000000000001 11.467500000000001 -101.97Q10.725 -103.95 7.590000000000001 -105.27000000000001L3.3000000000000003 -107.25V-108.9H35.145L65.67 -29.040000000000003L94.38000000000001 -108.9H126.885V-107.25L124.245 -106.26Q121.11 -105.105 119.95500000000001 -103.0425Q118.80000000000001 -100.98 118.80000000000001 -97.68V-11.385Q118.80000000000001 -8.085 119.625 -6.2700000000000005Q120.45 -4.455 123.58500000000001 -3.1350000000000002L126.885 -1.6500000000000001V0.0H85.8V-1.6500000000000001L89.265 -3.1350000000000002Q92.4 -4.455 93.22500000000001 -6.2700000000000005Q94.05000000000001 -8.085 94.05000000000001 -11.385V-48.510000000000005L94.38000000000001 -95.7L59.895 0.0H51.645L15.675 -94.545L16.17 -53.46V-11.88Q16.17 -8.25 17.2425 -6.0225Q18.315 -3.7950000000000004 21.45 -2.805L25.080000000000002 -1.6500000000000001V0.0Z M154.60500000000002 2.475Q145.035 2.475 138.51749999999998 -2.9700000000000006Q132.0 -8.415000000000001 132.0 -18.645Q132.0 -26.400000000000002 139.92000000000002 -32.917500000000004Q147.84 -39.435 164.835 -42.735Q167.47500000000002 -43.230000000000004 170.775 -43.807500000000005Q174.075 -44.385000000000005 177.705 -45.045V-58.080000000000005Q177.705 -69.3 174.98250000000002 -73.8375Q172.26 -78.375 166.485 -78.375Q162.525 -78.375 160.215 -75.8175Q157.905 -73.26 157.245 -66.99000000000001L156.91500000000002 -65.175Q156.585 -58.080000000000005 153.45 -54.78Q150.315 -51.480000000000004 145.695 -51.480000000000004Q141.405 -51.480000000000004 138.60000000000002 -54.120000000000005Q135.79500000000002 -56.760000000000005 135.79500000000002 -61.215Q135.79500000000002 -67.98 140.4975 -72.6Q145.2 -77.22 152.95499999999998 -79.53Q160.71 -81.84 169.785 -81.84Q184.47 -81.84 192.47250000000003 -74.6625Q200.47500000000002 -67.485 200.47500000000002 -51.315000000000005V-14.850000000000001Q200.47500000000002 -7.425000000000001 207.405 -7.425000000000001H211.03500000000003L212.52 -6.105Q209.385 -2.145 205.6725 0.0Q201.96 2.145 195.195 2.145Q187.935 2.145 183.72750000000002 -1.2375Q179.52 -4.62 178.2 -10.23Q173.25 -4.95 168.0525 -1.2375Q162.85500000000002 2.475 154.60500000000002 2.475ZM164.67000000000002 -7.590000000000001Q167.97 -7.590000000000001 170.85750000000002 -9.1575Q173.745 -10.725 177.705 -14.025V-41.745000000000005Q176.055 -41.415 174.405 -41.085Q172.755 -40.755 170.61 -40.425000000000004Q163.02 -38.445 158.48250000000002 -33.7425Q153.945 -29.040000000000003 153.945 -21.12Q153.945 -14.355 157.07999999999998 -10.9725Q160.215 -7.590000000000001 164.67000000000002 -7.590000000000001Z M247.335 2.475Q236.775 2.475 230.91750000000002 -2.8050000000000006Q225.06 -8.085 225.06 -19.635V-76.065H213.675V-77.715L217.635 -78.375Q222.75 -79.53 226.4625 -81.67500000000001Q230.175 -83.82000000000001 233.805 -87.45L247.335 -102.465H248.985L248.49 -79.36500000000001H266.97V-76.065H248.325V-16.665Q248.325 -10.89 250.8825 -7.92Q253.44 -4.95 257.4 -4.95Q260.865 -4.95 263.505 -6.682500000000001Q266.145 -8.415000000000001 268.785 -11.385L270.435 -9.735000000000001Q267.135 -4.125 261.36 -0.825Q255.585 2.475 247.335 2.475Z M276.045 0.0V-1.6500000000000001L278.025 -2.31Q283.965 -4.29 283.965 -10.56V-98.67Q283.965 -102.135 282.80999999999995 -103.785Q281.655 -105.435 278.355 -106.26L275.88 -106.92V-108.57000000000001L304.92 -115.665L307.56 -114.18L306.9 -90.915V-70.29Q312.675 -75.075 319.3575 -78.45750000000001Q326.04 -81.84 334.125 -81.84Q344.85 -81.84 351.2025 -75.73500000000001Q357.555 -69.63000000000001 357.555 -56.925000000000004V-10.395000000000001Q357.555 -7.095000000000001 358.875 -5.115Q360.195 -3.1350000000000002 363.495 -2.145L364.815 -1.6500000000000001V0.0H326.205V-1.6500000000000001L328.185 -2.145Q334.125 -4.125 334.125 -10.56V-62.370000000000005Q334.125 -68.97 331.89750000000004 -71.445Q329.67 -73.92 324.06 -73.92Q320.43 -73.92 316.14 -72.51750000000001Q311.85 -71.11500000000001 307.395 -67.65V-10.23Q307.395 -3.7950000000000004 313.335 -1.98L314.655 -1.6500000000000001V0.0Z" class="math"/></g></svg></div>
+        <div class="mission">
+          <h1 id="mission">Supporting <span class="squiggle">joyful math<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 20 2, 35 18, 52 9 S 85 2, 102 11 S 135 18, 152 8 S 185 4, 198 11"></path></svg></span> as a human activity for everyone from children to research mathematicians.</h1>
+          <p class="lede">We help educators, researchers, and community leaders open up real mathematical experiences, in classrooms and well beyond.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="joyful" aria-labelledby="joyful-title">
+      <div class="section-head">
+        <h2 id="joyful-title">What do we mean by joyful math?</h2>
+        <p>School mathematics too often comes down to prescribed steps and formulas. Mathematics as researchers practice it looks very different, and everyone deserves a chance to experience it.</p>
+      </div>
+      <div class="contrast">
+        <div class="side not">
+          <h3>Math as a list of steps</h3>
+          <ul class="words" aria-label="What school math often emphasizes">
+            <li>computation</li>
+            <li>rote memorization</li>
+            <li>speed</li>
+            <li>individual success or failure</li>
+          </ul>
+        </div>
+        <div class="side yes">
+          <h3>Math as mathematicians do it</h3>
+          <ul class="words" aria-label="What joyful math involves">
+            <li>curiosity</li>
+            <li>investigation</li>
+            <li>debate</li>
+            <li>discovery, together</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs" aria-labelledby="programs-title">
+      <div class="section-head">
+        <h2 id="programs-title">Two communities we help grow</h2>
+        <p>Our work centers on two national communities: the people who lead Math Circles, and the people who create and use free open educational resources.</p>
+      </div>
+      <div class="cards">
+        <article class="card circles">
+          <svg class="art" viewBox="0 0 132 112" aria-hidden="true">
+            <circle style="stroke:var(--line)" cx="66" cy="56" r="38" fill="none" stroke-width="2" stroke-dasharray="5 6"></circle>
+            <path style="fill:var(--sun);stroke:var(--line)" d="M66 42 l4.5 9 10 1.4 -7.3 7 1.8 9.9 -9 -4.7 -9 4.7 1.8 -9.9 -7.3 -7 10 -1.4z" stroke-width="2" stroke-linejoin="round"></path>
+            <circle style="fill:var(--coral);stroke:var(--line)" cx="66" cy="18" r="8" stroke-width="2"></circle>
+            <circle style="fill:var(--mint);stroke:var(--line)" cx="99" cy="37" r="8" stroke-width="2"></circle>
+            <circle style="fill:var(--brand);stroke:var(--line)" cx="99" cy="75" r="8" stroke-width="2"></circle>
+            <circle style="fill:var(--sun);stroke:var(--line)" cx="66" cy="94" r="8" stroke-width="2"></circle>
+            <circle style="fill:var(--coral);stroke:var(--line)" cx="33" cy="75" r="8" stroke-width="2"></circle>
+            <circle style="fill:var(--mint);stroke:var(--line)" cx="33" cy="37" r="8" stroke-width="2"></circle>
+          </svg>
+          <h3>Math Circles</h3>
+          <p class="for">For students, and for teachers</p>
+          <p>Math Circles are communities of students or teachers who meet regularly to solve problems together. Through exploration, discovery, and inquiry, participants work with significant mathematics and practice the habits of mind that mathematicians use every day.</p>
+          <ul class="chips" aria-label="Kinds of Math Circles">
+            <li>Student circles</li>
+            <li>Teachers’ circles</li>
+          </ul>
+        </article>
+
+        <article class="card oer">
+          <svg class="art" viewBox="0 0 132 112" aria-hidden="true">
+            <path style="fill:var(--panel);stroke:var(--line)" d="M66 28 C 50 18, 26 18, 12 24 L 12 92 C 26 86, 50 86, 66 96 Z" stroke-width="2" stroke-linejoin="round"></path>
+            <path style="fill:var(--tint-mint);stroke:var(--line)" d="M66 28 C 82 18, 106 18, 120 24 L 120 92 C 106 86, 82 86, 66 96 Z" stroke-width="2" stroke-linejoin="round"></path>
+            <g style="fill:var(--line)">
+              <circle cx="80" cy="40" r="2.6"></circle><circle cx="80" cy="49" r="2.6"></circle><circle cx="89" cy="40" r="2.6"></circle>
+              <circle cx="100" cy="40" r="2.6"></circle><circle cx="100" cy="58" r="2.6"></circle><circle cx="109" cy="49" r="2.6"></circle>
+            </g>
+            <path style="stroke:var(--line)" d="M78 74 h32" stroke-width="2" stroke-linecap="round"></path>
+            <circle style="fill:var(--coral);stroke:var(--line)" cx="96" cy="74" r="5.5" stroke-width="2"></circle>
+            <path style="stroke:var(--brand)" d="M22 40 q 8 -6 16 0 t 16 0" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
+            <path style="stroke:var(--muted)" d="M22 54 h30 M22 64 h24 M22 74 h28" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <h3>Accessible, interactive open educational resources</h3>
+          <p class="for">For authors, teachers, and students</p>
+          <p>Textbook costs, inaccessible formats, and static pages all put roadblocks in front of students. We support free open resources in mathematics, especially those made with <a href="https://pretextbook.org">PreTeXt</a>, an open-source authoring and publishing system. PreTeXt material works with screen-reading software and converts, for free, to embossable Braille. We help its authors collaborate and share their work.</p>
+          <ul class="chips" aria-label="What these resources are">
+            <li>Free</li>
+            <li>Interactive</li>
+            <li>Screen-reader friendly</li>
+            <li>Braille-ready</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="together" aria-labelledby="together-title">
+      <div class="section-head">
+        <h2 id="together-title">Building bridges</h2>
+      </div>
+      <p class="people">Students benefit most from what we do, but we work mainly with the people who make joyful math happen: educators, researchers, resource developers, and community leaders who create and sustain their own programs. Across all of it, we build lasting collaborations that cross the usual boundaries.</p>
+      <ul class="bridges">
+        <li><span>Formal</span><svg viewBox="0 0 46 18" aria-hidden="true"><path d="M4 9 C 14 1, 32 1, 42 9 M4 9 l5 -4 M4 9 l5 4 M42 9 l-5 -4 M42 9 l-5 4"></path></svg><span>Informal</span></li>
+        <li><span>K–12</span><svg viewBox="0 0 46 18" aria-hidden="true"><path d="M4 9 C 14 1, 32 1, 42 9 M4 9 l5 -4 M4 9 l5 4 M42 9 l-5 -4 M42 9 l-5 4"></path></svg><span>Higher education</span></li>
+        <li><span>Researchers</span><svg viewBox="0 0 46 18" aria-hidden="true"><path d="M4 9 C 14 1, 32 1, 42 9 M4 9 l5 -4 M4 9 l5 4 M42 9 l-5 -4 M42 9 l-5 4"></path></svg><span>Practitioners</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="wordmark">Joyful Math Foundation</span>
+    <a href="mailto:info@joyfulmath.org">info@joyfulmath.org</a>
+    <p class="legal">The Joyful Math Foundation is a 501(c)(3) tax-exempt organization. EIN: 42-5191265.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var canvas = document.getElementById('doodles');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var glyphs = ['π', '∞', '∑', '√', '△', '○', '∮', 'φ', 'e', '½', '∠', '◇', '+', '÷', 'ℵ', '∫'];
+  var tokens = ['--brand', '--coral', '--mint', '--sun'];
+  var colors = [];
+  var items = [];
+  var w = 0, h = 0, dpr = 1;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function readColors() {
+    var cs = getComputedStyle(document.documentElement);
+    colors = tokens.map(function (t) { return cs.getPropertyValue(t).trim() || '#1a5fb4'; });
+  }
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function setup() {
+    var r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.max(10, Math.min(26, Math.round(w * h / 32000)));
+    items = [];
+    for (var i = 0; i < n; i++) {
+      items.push({
+        g: glyphs[i % glyphs.length], x: rand(0, w), y: rand(0, h), s: rand(22, 46),
+        a: rand(-0.5, 0.5), va: rand(-0.003, 0.003), vx: rand(-0.12, 0.12), vy: rand(-0.18, -0.05),
+        c: i % 4, ph: rand(0, Math.PI * 2)
+      });
+    }
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      ctx.save();
+      ctx.translate(it.x + Math.sin(t / 1800 + it.ph) * 6, it.y);
+      ctx.rotate(it.a);
+      ctx.globalAlpha = 0.22;
+      ctx.fillStyle = colors[it.c];
+      ctx.font = '600 ' + it.s + 'px "Fraunces", Georgia, serif';
+      ctx.fillText(it.g, 0, 0);
+      ctx.restore();
+    }
+  }
+  function step(t) {
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      it.x += it.vx; it.y += it.vy; it.a += it.va;
+      if (it.y < -50) { it.y = h + 40; it.x = rand(0, w); }
+      if (it.x < -50) it.x = w + 40; else if (it.x > w + 50) it.x = -40;
+    }
+    draw(t);
+    requestAnimationFrame(step);
+  }
+  readColors(); setup(); draw(0);
+  window.addEventListener('resize', function () { setup(); draw(performance.now()); });
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq.addEventListener) mq.addEventListener('change', function () { readColors(); draw(performance.now()); });
+  }
+  new MutationObserver(function () { readColors(); draw(performance.now()); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(performance.now()); });
+  if (!reduce) requestAnimationFrame(step);
+})();
+</script>
+
+</body>
+</html>
